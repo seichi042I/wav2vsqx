@@ -740,7 +740,7 @@ if __name__ == '__main__':
     pit_pos = [x*5 for x in range(2000)]
 
     no_pitch_bend = False
-    data, sr = librosa.load("vsqx/wav.wav", dtype=np.double)
+    data, sr = librosa.load("wav.wav", dtype=np.double)
     n_fft = 256
     hop_len = 128
     harvest = Harvest(fs=sr, n_fft=n_fft, hop_length=hop_len,
@@ -748,7 +748,7 @@ if __name__ == '__main__':
 
     f0 = harvest.forward(data)
 
-    kana, moras, times, frames = lab_analisys("vsqx/lab.lab")
+    kana, moras, times, frames = lab_analisys("lab.lab")
     print(times)
     print(frames)
     mora_ave = [np.sum(f0[f[0]:f[1]])/len(f0[f[0]:f[1]]) for f in frames]
