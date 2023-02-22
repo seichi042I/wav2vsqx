@@ -89,6 +89,22 @@ def kana2mkp(kana: str = 'ら', def_phoneme: str = '4 a') -> str:
     return miku_go.get(kana, def_phoneme)
 
 
+def g2p_julius(text_filepath: Path, out_dirpath: Path):
+    with open(text_filepath, 'r') as in_file:
+        for line in in_file.readlines():
+            name = "voice"
+            text = line
+
+            phoneme = pyopenjtalk.g2p(text, kana=False)
+            phoneme = phoneme.lower()
+            phoneme = phoneme.replace('pau', 'sp')
+            phoneme = phoneme.replace('cl', 'q')
+            print(phoneme)
+            Path("text").mkdir(exist_ok=True, parents=True)
+            with open(out_dirpath / f'{name}.txt', 'w') as out_file:
+                out_file.write(phoneme)
+
+
 def lab_analisys(dirpath: Path, spf: float):
     """labファイルからモーラと継続時間を解析
 
@@ -153,7 +169,7 @@ def lab_analisys(dirpath: Path, spf: float):
         text = text.replace('\n', '').replace('。', '')
     kana = pyopenjtalk.g2p(text=text, kana=True)
 
-    return kana, moras, times, frames
+    return kana, times[1:-1], frames[1:-1], int(times[1][0]*1000)
 
 # pitch bend
 
@@ -196,3 +212,11 @@ def pitch_plot(doc: Document, pos: int, pitch: int = 0):
     mCtrl.appendChild(attr)
 
     return mCtrl
+
+
+def create_note_json(tick: int, note_num: int, lyrics: str):
+    noteOn = {'velocity': 80, 'tick': 0,
+              'sub_type': 'noteOn', 'channel': 0, 'note_num': note_num}
+    noteOff = {u'velocity': 0, u'tick': tick, u'sub_type': u'noteOff',
+               u'channel': 0, u'note_num': note_num, u'lyrics': lyrics}
+    return noteOn, noteOff
