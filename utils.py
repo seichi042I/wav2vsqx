@@ -36,7 +36,7 @@ miku_go = {
     "わ": "w a",  "ゐ": "w i",   "ゑ": "w e",   "を": "o",    "ん": "N\\",
     "ふぁ": "p\ a", "つぁ": "ts a",
     "うぃ": "w i",  "すぃ": "s i",   "ずぃ": "dz i", "つぃ": "ts i",  "てぃ": "t' i",
-    "でぃ": "d' i", "ふぃ": "p\' i",
+    "でぃ": "d' i", "ふぃ": "p\\' i",
     "とぅ": "t M",  "どぅ": "d M",
     "いぇ": "j e",  "うぇ": "w e",   "きぇ": "k' e", "しぇ": "S e",   "ちぇ": "tS e",
     "つぇ": "ts e", "てぇ": "t' e",  "にぇ": "J e",  "ひぇ": "C e",   "みぇ": "m' e",
@@ -70,7 +70,7 @@ miku_go = {
     "ワ": "w a", "ヲ": "o",    "ン": "N\\",
     "ファ": "p\ a", "ツァ": "ts a",
     "ウィ": "w i",  "スィ": "s i",   "ズィ": "dz i", "ツィ": "ts i",  "ティ": "t' i",
-    "ディ": "d' i", "フィ": "p\' i",
+    "ディ": "d' i", "フィ": "p\\' i",
     "トゥ": "t M",  "ドゥ": "d M",
     "イェ": "j e",  "ウェ": "w e",   "キェ": "k' e", "シェ": "S e",   "チェ": "tS e",
     "ツェ": "ts e", "テェ": "t' e",  "ニェ": "J e",  "ヒェ": "C e",   "ミェ": "m' e",
@@ -183,8 +183,13 @@ def lab_analisys(dirpath: Path, spf: float):
         text = f.readline()
         text = text.replace('\n', '').replace('。', '')
     kana = pyopenjtalk.g2p(text=text, kana=True)
-
-    return moraWakachi(kana), times[1:-1], frames[1:-1], int(times[1][0]*1000)
+    kanas = kana.split('、')
+    wakachis = [moraWakachi(k) for k in kanas]
+    kana = []
+    for w in wakachis:
+        kana.extend(w)
+        kana.append('、')
+    return kana[:-1], times[1:-1], frames[1:-1], int(times[1][0]*1000)
 
 # pitch bend
 
