@@ -96,8 +96,10 @@
             </singer>
         </musicalPart>
     </vsTrack>
-    <seTrack></seTrack>
-    <karaokeTrack></karaokeTrack>
+    <seTrack>
+    </seTrack>
+    <karaokeTrack>
+    </karaokeTrack>
     <aux>
         <auxID><![CDATA[AUX_VST_HOST_CHUNK_INFO]]></auxID>
         <content><![CDATA[VlNDSwAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></content>
