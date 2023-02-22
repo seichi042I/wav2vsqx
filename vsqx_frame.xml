@@ -74,7 +74,9 @@
             <posTick>7680</posTick>
             <playTime>614400</playTime>
             <partName><![CDATA[MIKU_V3_Original]]></partName>
-            <comment><![CDATA[]]></comment>
+            <comment>
+            <![CDATA[]]>
+            </comment>
             <stylePlugin>
                 <stylePluginID><![CDATA[ACA9C502-A04B-42b5-B2EB-5CEA36D16FCE]]></stylePluginID>
                 <stylePluginName><![CDATA[VOCALOID2 Compatible Style]]></stylePluginName>
