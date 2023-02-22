@@ -30,9 +30,9 @@ STAT: 1 MFCC modules created
 STAT: [2] create recognition processing instance(s) with AM and LM
 STAT: composing recognizer instance SR00 _default (AM00 _default, LM00 _default)
 STAT: Building HMM lexicon tree
-STAT: lexicon size: 165+0=165
+STAT: lexicon size: 57+0=57
 STAT: coordination check passed
-STAT: multi-gram: beam width set to 165 (guess) by lexicon change
+STAT: multi-gram: beam width set to 57 (guess) by lexicon change
 STAT: wchmm (re)build completed
 STAT: SR00 _default composed
 STAT: [3] initialize for acoustic HMM calculation
@@ -156,9 +156,9 @@ Language Model(s)
       category-pair matrix: 16 bytes (448 bytes allocated)
 
  Vocabulary Info:
-        vocabulary size  = 3 words, 55 models
-        average word len = 18.3 models, 55.0 states
-       maximum state num = 159 nodes per word
+        vocabulary size  = 3 words, 19 models
+        average word len = 6.3 models, 19.0 states
+       maximum state num = 51 nodes per word
        transparent words = not exist
        words under class = not exist
 
@@ -171,7 +171,7 @@ Recognizer(s)
 [SR00 "_default"]  AM00 "_default"  +  LM00 "_default"
 
  Lexicon tree:
-	 total node num =    165
+	 total node num =     57
 	  root node num =      3
 	  leaf node num =      3
 
@@ -181,7 +181,7 @@ Recognizer(s)
 
  Search parameters: 
 	    multi-path handling = no
-	(-b) trellis beam width = 165 (-1 or not specified - guessed)
+	(-b) trellis beam width = 57 (-1 or not specified - guessed)
 	(-bs)score pruning thres= disabled
 	(-n)search candidate num= 1
 	(-s)  search stack size = 500
@@ -233,81 +233,46 @@ Notice for feature extraction (01),
 ------
 ### read waveform input
 Stat: adin_file: input speechfile: ../data/segmentation/audio/voice.wav
-STAT: 68366 samples (4.27 sec.)
+Warning: strip: sample 190-206 has zero value, stripped
+STAT: 33583 samples (2.10 sec.)
 STAT: ### speech analysis (waveform -> MFCC)
 ### Recognition: 1st pass (LR beam)
 pass1_best: w_0 w_1 w_2
 pass1_best_wordseq: 0 1 2
-pass1_best_phonemeseq: silB | n a g a sh i g i r i g a k a n z e n n i h a i r e b a sp d e b a f u n o k o o k a g a f u y o s a r e r u | silE
-pass1_best_score: -11791.185547
+pass1_best_phonemeseq: silB | ch o q t o r u s u n i sh i m a s u | silE
+pass1_best_score: -5464.635254
 ### Recognition: 2nd pass (RL heuristic best-first)
-STAT: 00 _default: 3 generated, 3 pushed, 4 nodes popped in 425
+STAT: 00 _default: 3 generated, 3 pushed, 4 nodes popped in 208
 ALIGN: === phoneme alignment begin ===
 sentence1: w_0 w_1 w_2
 wseq1: 0 1 2
-phseq1: silB | n a g a sh i g i r i g a k a n z e n n i h a i r e b a sp d e b a f u n o k o o k a g a f u y o s a r e r u | silE
+phseq1: silB | ch o q t o r u s u n i sh i m a s u | silE
 cmscore1: 1.000 1.000 1.000
-score1: -11791.166992
+score1: -5464.636719
 === begin forced alignment ===
 -- phoneme alignment --
  id: from  to    n_score    unit
  ----------------------------------------
-[   0   14]  -24.414007  silB
-[  15   19]  -28.915894  n
-[  20   29]  -26.582418  a
-[  30   34]  -28.966564  g
-[  35   38]  -29.083115  a
-[  39   52]  -27.086636  sh
-[  53   56]  -30.741150  i
-[  57   60]  -29.579651  g
-[  61   66]  -26.415405  i
-[  67   69]  -30.217447  r
-[  70   77]  -26.933380  i
-[  78   81]  -31.465271  g
-[  82   89]  -30.326538  a
-[  90   96]  -28.306885  k
-[  97  107]  -27.566895  a
-[ 108  112]  -32.358692  n
-[ 113  117]  -28.019970  z
-[ 118  124]  -24.903250  e
-[ 125  128]  -29.484680  n
-[ 129  133]  -26.739111  n
-[ 134  137]  -29.166931  i
-[ 138  144]  -29.186802  h
-[ 145  153]  -28.477674  a
-[ 154  158]  -28.080078  i
-[ 159  161]  -27.739420  r
-[ 162  167]  -28.273764  e
-[ 168  173]  -27.843100  b
-[ 174  177]  -29.210693  a
-[ 178  223]  -26.458836  sp
-[ 224  229]  -32.567871  d
-[ 230  235]  -29.711426  e
-[ 236  242]  -29.493931  b
-[ 243  249]  -29.164968  a
-[ 250  254]  -26.088379  f
-[ 255  260]  -27.698404  u
-[ 261  265]  -28.474707  n
-[ 266  273]  -30.155029  o
-[ 274  281]  -29.383667  k
-[ 282  284]  -28.430338  o
-[ 285  291]  -29.996792  o
-[ 292  296]  -31.196777  k
-[ 297  302]  -28.959961  a
-[ 303  306]  -27.778809  g
-[ 307  309]  -29.829752  a
-[ 310  320]  -27.049450  f
-[ 321  323]  -30.406900  u
-[ 324  330]  -28.394253  y
-[ 331  333]  -33.226238  o
-[ 334  345]  -29.096191  s
-[ 346  349]  -31.775879  a
-[ 350  352]  -27.670248  r
-[ 353  358]  -24.055502  e
-[ 359  362]  -25.708496  r
-[ 363  370]  -27.654297  u
-[ 371  424]  -25.165817  silE
-re-computed AM score: -11791.185547
+[   0   32]  -20.945543  silB
+[  33   38]  -30.379944  ch
+[  39   50]  -30.288336  o
+[  51   53]  -29.817017  q
+[  54   57]  -30.292908  t
+[  58   61]  -30.889282  o
+[  62   67]  -32.071228  r
+[  68   70]  -30.693848  u
+[  71   80]  -28.728882  s
+[  81   84]  -32.743530  u
+[  85   89]  -32.065624  n
+[  90   94]  -31.831738  i
+[  95  101]  -27.954172  sh
+[ 102  104]  -31.824951  i
+[ 105  111]  -30.640903  m
+[ 112  123]  -30.443726  a
+[ 124  138]  -26.106380  s
+[ 139  141]  -29.743082  u
+[ 142  207]  -23.022184  silE
+re-computed AM score: -5464.635254
 === end forced alignment ===
 
 

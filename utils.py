@@ -2,6 +2,21 @@ from numpy import ceil
 import pyopenjtalk
 from pathlib import Path
 from xml.dom.minidom import Document
+import re
+
+# 各条件を正規表現で表す
+c1 = '[ウクスツヌフムユルグズヅブプヴ][ァィェォ]'  # ウ段＋「ァ/ィ/ェ/ォ」
+c2 = '[イキシチニヒミリギジヂビピ][ャュェョ]'  # イ段（「イ」を除く）＋「ャ/ュ/ェ/ョ」
+c3 = '[テデ][ィュ]'  # 「テ/デ」＋「ャ/ィ/ュ/ョ」
+c4 = '[ァ-ヴー]'  # カタカナ１文字（長音含む）
+
+cond = '('+c1+'|'+c2+'|'+c3+'|'+c4+')'
+re_mora = re.compile(cond)
+
+
+def moraWakachi(kana_text):
+    return re_mora.findall(kana_text)
+
 
 miku_go = {
     "あ": "a",    "い": "i",     "う": "M",     "え": "e",    "お": "o",
@@ -114,7 +129,7 @@ def lab_analisys(dirpath: Path, spf: float):
     Returns:
         Tuple[str, str, List, List]: kanaはカタカナの文字列。morasはjuliusの音素。timesは秒単位でモーラの開始時刻と終了時刻のリスト。framesはモーラ単位のstftの開始フレームと終了フレーム。
     """
-    with open(dirpath / "lab", "r") as f:
+    with open(dirpath / "segmentation/lab/voice.lab", "r") as f:
         lines = f.readlines()
     moras = []
     times = []
@@ -145,12 +160,12 @@ def lab_analisys(dirpath: Path, spf: float):
             if mora == '':
                 mora += phoneme
                 elapsed[0] = float(begin)
-            elif mora == 'n':  # 一つ前がnならば「ん」なので区切る
+            elif mora == 'n' or mora == 'q':  # 一つ前がnならば「ん」なので区切る
                 elapsed[1] = float(begin)
 
                 frame = [int(ceil(e/spf)) for e in elapsed]
 
-                moras.append('N')
+                moras.append(mora)
                 times.append(elapsed)
                 frames.append(frame)
 
@@ -169,7 +184,7 @@ def lab_analisys(dirpath: Path, spf: float):
         text = text.replace('\n', '').replace('。', '')
     kana = pyopenjtalk.g2p(text=text, kana=True)
 
-    return kana, times[1:-1], frames[1:-1], int(times[1][0]*1000)
+    return moraWakachi(kana), times[1:-1], frames[1:-1], int(times[1][0]*1000)
 
 # pitch bend
 
