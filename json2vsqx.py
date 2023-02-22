@@ -150,8 +150,8 @@ def wav2vsqx(
     data_dirpath: Path,
     out_filepath: Path,
     no_pitch_bend: bool = False,
-    n_fft: int = 256,
-    hop_length: int = 128
+    n_fft: int = 512,
+    hop_length: int = 256
 ):
 
     g2p_julius(data_dirpath / "text", data_dirpath / "segmentation/text")
@@ -166,7 +166,9 @@ def wav2vsqx(
     data, sr = librosa.load(data_dirpath / "voice.wav", dtype=np.double)
 
     harvest = Harvest(fs=sr, n_fft=n_fft, hop_length=hop_length,
-                      use_log_f0=False, use_token_averaged_f0=False)
+                      use_log_f0=False, use_token_averaged_f0=False,
+                      f0min=300,
+                      f0max=800)
 
     f0 = harvest.forward(data)
 
