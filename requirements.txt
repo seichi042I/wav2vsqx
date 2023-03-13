@@ -1,24 +1,21 @@
 appdirs==1.4.4
-attrs @ file:///croot/attrs_1668696182826/work
+attrs 
 audioread==3.0.0
-autopep8 @ file:///opt/conda/conda-bld/autopep8_1650463822033/work
+autopep8 
 brotlipy==0.7.0
-certifi @ file:///croot/certifi_1671487769961/work/certifi
-cffi @ file:///croot/cffi_1670423208954/work
+certifi 
+cffi 
 chardet==5.1.0
-charset-normalizer @ file:///tmp/build/80754af9/charset-normalizer_1630003229654/work
-conda==23.1.0
-conda-package-handling @ file:///croot/conda-package-handling_1672865015732/work
-conda_package_streaming @ file:///croot/conda-package-streaming_1670508151586/work
+charset-normalizer 
 contourpy==1.0.7
-cryptography @ file:///croot/cryptography_1673298753778/work
+cryptography 
 cycler==0.11.0
 Cython==0.29.33
 decorator==5.1.1
 fonttools==4.38.0
-idna @ file:///croot/idna_1666125576474/work
+idna 
 importlib-resources==5.12.0
-iniconfig @ file:///home/linux1/recipes/ci/iniconfig_1610983019677/work
+iniconfig 
 jaconv==0.3.4
 joblib==1.2.0
 jsonpickle==3.0.1
@@ -32,35 +29,35 @@ msgpack==1.0.4
 music21==8.1.0
 numba==0.56.4
 numpy==1.23.5
-packaging @ file:///croot/packaging_1671697413597/work
+packaging 
 Pillow==9.4.0
-pluggy @ file:///tmp/build/80754af9/pluggy_1648024445381/work
+pluggy 
 pooch==1.6.0
-py @ file:///opt/conda/conda-bld/py_1644396412707/work
-pycodestyle @ file:///croot/pycodestyle_1674267221883/work
-pycosat @ file:///croot/pycosat_1666805502580/work
-pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
+py 
+pycodestyle 
+pycosat 
+pycparser 
 pyopenjtalk==0.3.0
-pyOpenSSL @ file:///opt/conda/conda-bld/pyopenssl_1643788558760/work
+pyOpenSSL 
 pyparsing==3.0.9
-PySocks @ file:///tmp/build/80754af9/pysocks_1605305812635/work
+PySocks 
 python-dateutil==2.8.2
 pyworld==0.3.2
-requests @ file:///opt/conda/conda-bld/requests_1657734628632/work
-ruamel.yaml @ file:///croot/ruamel.yaml_1666304550667/work
-ruamel.yaml.clib @ file:///croot/ruamel.yaml.clib_1666302247304/work
+requests 
+ruamel.yaml 
+ruamel.yaml.clib 
 scikit-learn==1.2.1
 scipy==1.10.1
 six==1.16.0
 soundfile==0.12.1
 soxr==0.3.3
 threadpoolctl==3.1.0
-toml @ file:///tmp/build/80754af9/toml_1616166611790/work
-tomli @ file:///opt/conda/conda-bld/tomli_1657175507142/work
-toolz @ file:///croot/toolz_1667464077321/work
-tqdm @ file:///opt/conda/conda-bld/tqdm_1664392687731/work
+toml 
+tomli 
+toolz 
+tqdm 
 typing_extensions==4.5.0
-urllib3 @ file:///croot/urllib3_1673575502006/work
+urllib3 
 webcolors==1.12
 zipp==3.14.0
-zstandard @ file:///opt/conda/conda-bld/zstandard_1663827383994/work
+zstandard 
