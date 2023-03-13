@@ -1,0 +1,292 @@
+STAT: jconf successfully finalized
+STAT: *** loading AM00 _default
+Stat: init_phmm: Reading in HMM definition
+Stat: read_binhmm: binary format HMM definition
+Stat: read_binhmm: this HMM does not need multipath handling
+Stat: init_phmm: defined HMMs:    43
+Stat: init_phmm: logical names:    43
+Stat: init_phmm: base phones:    43 used in logical
+Stat: init_phmm: finished reading HMM definitions
+STAT: *** AM00 _default loaded
+STAT: *** loading LM00 _default
+STAT: reading [../data/segmentation/dfa_dict/voice.dfa] and [../data/segmentation/dfa_dict/voice.dict]...
+Stat: init_voca: read 3 words
+Error: gzfile: failed to open "../data/segmentation/dfa_dict/voice.dfa.forward"
+Error: init_dfa: failed to open ../data/segmentation/dfa_dict/voice.dfa.forward
+STAT: done
+STAT: Gram #0 voice registered
+STAT: Gram #0 voice: new grammar loaded, now mash it up for recognition
+STAT: Gram #0 voice: extracting category-pair constraint for the 1st pass
+STAT: Gram #0 voice: installed
+STAT: Gram #0 voice: turn on active
+STAT: grammar update completed
+STAT: *** LM00 _default loaded
+STAT: ------
+STAT: All models are ready, go for final fusion
+STAT: [1] create MFCC extraction instance(s)
+STAT: *** create MFCC calculation modules from AM
+STAT: AM 0 _default: create a new module MFCC01
+STAT: 1 MFCC modules created
+STAT: [2] create recognition processing instance(s) with AM and LM
+STAT: composing recognizer instance SR00 _default (AM00 _default, LM00 _default)
+STAT: Building HMM lexicon tree
+STAT: lexicon size: 96+0=96
+STAT: coordination check passed
+STAT: multi-gram: beam width set to 96 (guess) by lexicon change
+STAT: wchmm (re)build completed
+STAT: SR00 _default composed
+STAT: [3] initialize for acoustic HMM calculation
+Stat: outprob_init: state-level mixture PDFs, use calc_mix()
+Stat: addlog: generating addlog table (size = 1953 kB)
+Stat: addlog: addlog table generated
+STAT: [4] prepare MFCC storage(s)
+STAT: All init successfully done
+
+STAT: ###### initialize input device
+----------------------- System Information begin ---------------------
+JuliusLib rev.4.6 (fast)
+
+Engine specification:
+ -  Base setup   : fast
+ -  Supported LM : DFA, N-gram, Word
+ -  Extension    :
+ -  Compiled by  : gcc -O6 -fomit-frame-pointer -fPIC
+Library configuration: version 4.6
+ - Audio input
+    primary A/D-in driver   : oss (Open Sound System compatible)
+    available drivers       : oss
+    wavefile formats        : RAW and WAV only
+    max. length of an input : 320000 samples, 150 words
+ - Language Model
+    class N-gram support    : yes
+    MBR weight support      : yes
+    word id unit            : short (2 bytes)
+ - Acoustic Model
+    multi-path treatment    : autodetect
+ - External library
+    file decompression by   : gzip command
+ - Process hangling
+    fork on adinnet input   : no
+ - built-in SIMD instruction set for DNN
+    SSE AVX FMA
+    FMA is available maximum on this cpu, use it
+ - built-in CUDA support: no
+
+
+------------------------------------------------------------
+Configuration of Modules
+
+ Number of defined modules: AM=1, LM=1, SR=1
+
+ Acoustic Model (with input parameter spec.):
+ - AM00 "_default"
+	hmmfilename=./models/hmmdefs_monof_mix16_gid.binhmm
+
+ Language Model:
+ - LM00 "_default"
+	grammar #1:
+	    dfa  = ../data/segmentation/dfa_dict/voice.dfa
+	    dict = ../data/segmentation/dfa_dict/voice.dict
+
+ Recognizer:
+ - SR00 "_default" (AM00, LM00)
+
+------------------------------------------------------------
+Speech Analysis Module(s)
+
+[MFCC01]  for [AM00 _default]
+
+ Acoustic analysis condition:
+	       parameter = MFCC_E_D_N_Z (25 dim. from 12 cepstrum + energy, abs energy supressed with CMN)
+	sample frequency = 16000 Hz
+	   sample period =  625  (1 = 100ns)
+	     window size =  400 samples (25.0 ms)
+	     frame shift =  160 samples (10.0 ms)
+	    pre-emphasis = 0.97
+	    # filterbank = 24
+	   cepst. lifter = 22
+	      raw energy = False
+	energy normalize = False
+	    delta window = 2 frames (20.0 ms) around
+	     hi freq cut = OFF
+	     lo freq cut = OFF
+	 zero mean frame = OFF
+	       use power = OFF
+	             CVN = OFF
+	            VTLN = OFF
+
+    spectral subtraction = off
+
+ cep. mean normalization = yes, with per-utterance self mean
+ cep. var. normalization = no
+
+	 base setup from = Julius defaults
+
+------------------------------------------------------------
+Acoustic Model(s)
+
+[AM00 "_default"]
+
+ HMM Info:
+    43 models, 129 states, 129 mpdfs, 2064 Gaussians are defined
+	      model type = context dependency handling OFF
+      training parameter = MFCC_E_N_D_Z
+	   vector length = 25
+	number of stream = 1
+	     stream info = [0-24]
+	cov. matrix type = DIAGC
+	   duration type = NULLD
+	max mixture size = 16 Gaussians
+     max length of model = 5 states
+     logical base phones = 43
+       model skip trans. = not exist, no multi-path handling
+
+ AM Parameters:
+        Gaussian pruning = none (full computation)  (-gprune)
+    short pause HMM name = "sp" specified, "sp" applied (physical)  (-sp)
+  cross-word CD on pass1 = handle by approx. (use average prob. of same LC)
+
+------------------------------------------------------------
+Language Model(s)
+
+[LM00 "_default"] type=grammar
+
+ DFA grammar info:
+      4 nodes, 3 arcs, 3 terminal(category) symbols
+      category-pair matrix: 16 bytes (448 bytes allocated)
+
+ Vocabulary Info:
+        vocabulary size  = 3 words, 32 models
+        average word len = 10.7 models, 32.0 states
+       maximum state num = 90 nodes per word
+       transparent words = not exist
+       words under class = not exist
+
+ Parameters:
+   found sp category IDs =
+
+------------------------------------------------------------
+Recognizer(s)
+
+[SR00 "_default"]  AM00 "_default"  +  LM00 "_default"
+
+ Lexicon tree:
+	 total node num =     96
+	  root node num =      3
+	  leaf node num =      3
+
+	(-penalty1) IW penalty1 = +0.0
+	(-penalty2) IW penalty2 = +0.0
+	(-cmalpha)CM alpha coef = 0.050000
+
+ Search parameters: 
+	    multi-path handling = no
+	(-b) trellis beam width = 96 (-1 or not specified - guessed)
+	(-bs)score pruning thres= disabled
+	(-n)search candidate num= 1
+	(-s)  search stack size = 500
+	(-m)    search overflow = after 2000 hypothesis poped
+	        2nd pass method = searching sentence, generating N-best
+	(-b2)  pass2 beam width = 30
+	(-lookuprange)lookup range= 5  (tm-5 <= t <tm+5)
+	(-sb)2nd scan beamthres = 80.0 (in logscore)
+	(-n)        search till = 1 candidates found
+	(-output)    and output = 1 candidates out of above
+	 output phoneme alignments
+	 all possible words will be expanded in 2nd pass
+	 build_wchmm2() used
+	 lcdset limited by word-pair constraint
+	short pause segmentation = off
+	fall back on search fail = off, returns search failure
+
+------------------------------------------------------------
+Decoding algorithm:
+
+	1st pass input processing = buffered, batch
+	1st pass method = 1-best approx. generating indexed trellis
+	output word confidence measure based on search-time scores
+
+------------------------------------------------------------
+FrontEnd:
+
+ Input stream:
+	             input type = waveform
+	           input source = waveform file
+	          input filelist = (none, get file name from stdin)
+	          sampling freq. = 16000 Hz required
+	         threaded A/D-in = supported, off
+	   zero frames stripping = on
+	         silence cutting = off
+	    long-term DC removal = off
+	    level scaling factor = 1.00 (disabled)
+	      reject short input = off
+	      reject  long input = off
+
+----------------------- System Information end -----------------------
+
+Notice for feature extraction (01),
+	*************************************************************
+	* Cepstral mean normalization for batch decoding:           *
+	* per-utterance mean will be computed and applied.          *
+	*************************************************************
+
+------
+### read waveform input
+Stat: adin_file: input speechfile: ../data/segmentation/audio/voice.wav
+STAT: 64644 samples (4.04 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: w_0 w_1
+pass1_best_wordseq: 0 1
+pass1_best_phonemeseq: silB | m i n n a a sp ky o o w a k i t e k u r e t e a r i g a t o o
+pass1_best_score: -12079.486328
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 3 generated, 3 pushed, 4 nodes popped in 402
+ALIGN: === phoneme alignment begin ===
+sentence1: w_0 w_1 w_2
+wseq1: 0 1 2
+phseq1: silB | m i n n a a sp ky o o w a k i t e k u r e t e a r i g a t o o | silE
+cmscore1: 1.000 1.000 1.000
+score1: -12098.165039
+=== begin forced alignment ===
+-- phoneme alignment --
+ id: from  to    n_score    unit
+ ----------------------------------------
+[   0    2]  -39.218964  silB
+[   3    5]  -40.734913  m
+[   6   25]  -30.974081  i
+[  26   28]  -33.698914  n
+[  29   31]  -33.201355  n
+[  32   34]  -36.312256  a
+[  35   37]  -30.972982  a
+[  38  218]  -28.577883  sp
+[ 219  239]  -28.228189  ky
+[ 240  243]  -29.958252  o
+[ 244  257]  -30.099888  o
+[ 258  260]  -32.244141  w
+[ 261  271]  -30.883699  a
+[ 272  278]  -29.010254  k
+[ 279  282]  -30.067383  i
+[ 283  287]  -30.926758  t
+[ 288  294]  -31.347378  e
+[ 295  299]  -32.292969  k
+[ 300  305]  -30.954916  u
+[ 306  309]  -30.637939  r
+[ 310  320]  -31.270418  e
+[ 321  327]  -32.253208  t
+[ 328  330]  -30.592447  e
+[ 331  337]  -31.503628  a
+[ 338  341]  -28.840820  r
+[ 342  348]  -29.129324  i
+[ 349  352]  -31.855713  g
+[ 353  364]  -33.807209  a
+[ 365  369]  -35.308006  t
+[ 370  374]  -35.895897  o
+[ 375  398]  -30.327311  o
+[ 399  401]  -35.912109  silE
+re-computed AM score: -12098.165039
+=== end forced alignment ===
+
+
+------
+### read waveform input
